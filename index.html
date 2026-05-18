@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Solid Mechanics Toolkit — Developed by Dr. Rahul Bachute, Ajeenkya DY Patil School of Engineering, Pune. Premium Interactive Engineering Education Platform for SPPU NEP 2020 PCC-201-MEC.">
+<meta name="author" content="Dr. Rahul Bachute, Ajeenkya DY Patil School of Engineering, Pune">
+<meta name="theme-color" content="#0a0e1a">
+<title>Solid Mechanics Toolkit | Dr. Rahul Bachute | ADYPSOE Pune</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- Libraries -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Particle Canvas Background -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="#hero">
+      <span class="brand-icon"><i class="fas fa-atom fa-spin-slow"></i></span>
+      <div class="brand-stack">
+        <span class="brand-text">Solid<span class="accent">Mechanics</span></span>
+        <span class="brand-dev">by Dr. Rahul Bachute · ADYPSOE</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#calculators"><i class="fas fa-calculator"></i> Calculators</a></li>
+        <li class="nav-item"><a class="nav-link" href="#simulations"><i class="fas fa-play-circle"></i> Simulations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#virtual-lab"><i class="fas fa-flask"></i> Virtual Lab</a></li>
+        <li class="nav-item"><a class="nav-link" href="#concepts"><i class="fas fa-lightbulb"></i> Concepts</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quiz"><i class="fas fa-brain"></i> Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="#formulas"><i class="fas fa-square-root-alt"></i> Formulas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#numericals"><i class="fas fa-pencil-alt"></i> Practice</a></li>
+        <li class="nav-item"><a class="nav-link" href="#qbank"><i class="fas fa-university"></i> Q.Bank</a></li>
+      </ul>
+      <div class="nav-controls ms-3">
+        <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+        <button class="btn-icon" id="fontToggle" title="Increase Font"><i class="fas fa-text-height"></i></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section id="hero" class="hero-section">
+  <div class="hero-bg-grid"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      SPPU NEP 2020 · PCC-201-MEC · Second Year Mechanical Engineering
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line1">Solid Mechanics</span>
+      <span class="line2 accent-gradient">Toolkit</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      <span class="word">Visualize</span>
+      <span class="sep">·</span>
+      <span class="word">Simulate</span>
+      <span class="sep">·</span>
+      <span class="word">Learn</span>
+    </p>
+
+    <p class="hero-desc">
+      A premium virtual engineering laboratory for mastering stress, strain, bending, torsion, and buckling — through live simulations and interactive exploration.
+    </p>
+
+    <div class="hero-cta">
+      <button class="cta-btn primary" onclick="scrollToSection('calculators')">
+        <i class="fas fa-rocket"></i> Start Learning
+      </button>
+      <button class="cta-btn secondary" onclick="scrollToSection('simulations')">
+        <i class="fas fa-play"></i> Explore Simulations
+      </button>
+      <button class="cta-btn ghost" onclick="scrollToSection('numericals')">
+        <i class="fas fa-pencil-alt"></i> Practice Numericals
+      </button>
+      <button class="cta-btn ghost" onclick="scrollToSection('virtual-lab')">
+        <i class="fas fa-flask"></i> Virtual Lab
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card"><span class="stat-num" data-target="12">0</span><span class="stat-label">Tools</span></div>
+      <div class="stat-card"><span class="stat-num" data-target="6">0</span><span class="stat-label">Simulators</span></div>
+      <div class="stat-card"><span class="stat-num" data-target="5">0</span><span class="stat-label">Virtual Labs</span></div>
+      <div class="stat-card"><span class="stat-num" data-target="200">0</span><span class="stat-label">Practice Problems</span></div>
+    </div>
+
+    <!-- Developer Credit -->
+    <div class="hero-developer-card">
+      <div class="dev-avatar">
+        <i class="fas fa-user-tie"></i>
+      </div>
+      <div class="dev-info">
+        <span class="dev-label">Developed by</span>
+        <span class="dev-name">Dr. Rahul Bachute</span>
+        <span class="dev-inst">
+          <i class="fas fa-university"></i>
+          Dept. of Mechanical Engineering &nbsp;·&nbsp; Ajeenkya DY Patil School of Engineering, Pune
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating formulas -->
+  <div class="floating-formula f1">σ = F/A</div>
+  <div class="floating-formula f2">τ = VQ/Ib</div>
+  <div class="floating-formula f3">M/I = σ/y = E/R</div>
+  <div class="floating-formula f4">P_cr = π²EI/L²</div>
+  <div class="floating-formula f5">ε = σ/E</div>
+  <div class="floating-formula f6">T/J = τ/r = Gθ/L</div>
+</section>
+
+<!-- ===================== CALCULATORS ===================== -->
+<section id="calculators" class="section-panel">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-calculator"></i> Engineering Calculators</div>
+    <h2 class="section-title">Interactive <span class="accent-gradient">Calculation Engine</span></h2>
+    <p class="section-desc">Step-by-step solutions with visual feedback and concept explanation</p>
+  </div>
+
+  <!-- Calculator Tabs -->
+  <div class="calc-tabs">
+    <button class="calc-tab active" data-calc="stress">Stress-Strain</button>
+    <button class="calc-tab" data-calc="sfd">SFD / BMD</button>
+    <button class="calc-tab" data-calc="deflection">Beam Deflection</button>
+    <button class="calc-tab" data-calc="shaft">Shaft Design</button>
+    <button class="calc-tab" data-calc="buckling">Euler Buckling</button>
+    <button class="calc-tab" data-calc="mohr">Mohr's Circle</button>
+  </div>
+
+  <div class="calc-workspace">
+
+    <!-- STRESS-STRAIN CALCULATOR -->
+    <div class="calc-panel active" id="calc-stress">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-compress-arrows-alt"></i> Stress & Strain Calculator</h3>
+          <div class="concept-badge">Normal Stress · Shear Stress · Young's Modulus · Poisson's Ratio</div>
+
+          <div class="input-group-custom">
+            <label>Applied Force (F)</label>
+            <div class="input-with-unit">
+              <input type="number" id="ss_force" value="50000" class="eng-input">
+              <span class="unit-badge">N</span>
+            </div>
+          </div>
+          <div class="input-group-custom">
+            <label>Cross-sectional Area (A)</label>
+            <div class="input-with-unit">
+              <input type="number" id="ss_area" value="500" class="eng-input">
+              <span class="unit-badge">mm²</span>
+            </div>
+          </div>
+          <div class="input-group-custom">
+            <label>Original Length (L₀)</label>
+            <div class="input-with-unit">
+              <input type="number" id="ss_length" value="200" class="eng-input">
+              <span class="unit-badge">mm</span>
+            </div>
+          </div>
+          <div class="input-group-custom">
+            <label>Young's Modulus (E)</label>
+            <div class="input-with-unit">
+              <input type="number" id="ss_E" value="200" class="eng-input">
+              <span class="unit-badge">GPa</span>
+            </div>
+          </div>
+          <div class="input-group-custom">
+            <label>Poisson's Ratio (ν)</label>
+            <div class="input-with-unit">
+              <input type="number" id="ss_nu" value="0.3" step="0.01" class="eng-input">
+              <span class="unit-badge">—</span>
+            </div>
+          </div>
+
+          <div class="material-presets">
+            <label>Material Preset:</label>
+            <div class="preset-btns">
+              <button class="preset-btn" onclick="setMaterial('steel')">Steel</button>
+              <button class="preset-btn" onclick="setMaterial('aluminum')">Aluminum</button>
+              <button class="preset-btn" onclick="setMaterial('copper')">Copper</button>
+              <button class="preset-btn" onclick="setMaterial('concrete')">Concrete</button>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calcStressStrain()">
+            <i class="fas fa-play"></i> Calculate
+          </button>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="preset-btn" style="flex:1" onclick="printCalculatorResults('stress')"><i class="fas fa-print"></i> Print</button>
+            <button class="preset-btn" style="flex:1" onclick="copyResultsToClipboard('stress')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+        </div>
+
+        <div class="calc-results glass-card" id="ss_results">
+          <h3 class="card-title"><i class="fas fa-chart-bar"></i> Step-by-Step Solution</h3>
+          <div id="ss_steps" class="steps-container">
+            <div class="placeholder-state">
+              <i class="fas fa-arrow-left fa-2x"></i>
+              <p>Enter values and click Calculate</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-visual glass-card">
+          <h3 class="card-title"><i class="fas fa-chart-line"></i> Stress-Strain Diagram</h3>
+          <div id="ss_chart" style="height:320px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SFD/BMD CALCULATOR -->
+    <div class="calc-panel" id="calc-sfd">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-drafting-compass"></i> SFD / BMD Generator</h3>
+          <div class="concept-badge">Simply Supported · Cantilever · Overhanging</div>
+
+          <div class="input-group-custom">
+            <label>Beam Type</label>
+            <select id="beam_type" class="eng-select" onchange="updateBeamInputs()">
+              <option value="ss_udl">Simply Supported - UDL</option>
+              <option value="ss_point">Simply Supported - Point Load</option>
+              <option value="cantilever_udl">Cantilever - UDL</option>
+              <option value="cantilever_point">Cantilever - Point Load</option>
+            </select>
+          </div>
+          <div class="input-group-custom">
+            <label>Beam Length (L)</label>
+            <div class="input-with-unit">
+              <input type="number" id="beam_L" value="4" class="eng-input">
+              <span class="unit-badge">m</span>
+            </div>
+          </div>
+          <div class="input-group-custom" id="udl_input">
+            <label>UDL Intensity (w)</label>
+            <div class="input-with-unit">
+              <input type="number" id="beam_w" value="10" class="eng-input">
+              <span class="unit-badge">kN/m</span>
+            </div>
+          </div>
+          <div class="input-group-custom" id="point_input" style="display:none">
+            <label>Point Load (P)</label>
+            <div class="input-with-unit">
+              <input type="number" id="beam_P" value="20" class="eng-input">
+              <span class="unit-badge">kN</span>
+            </div>
+          </div>
+          <div class="input-group-custom" id="position_input" style="display:none">
+            <label>Load Position from A (a)</label>
+            <div class="input-with-unit">
+              <input type="number" id="beam_a" value="2" class="eng-input">
+              <span class="unit-badge">m</span>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calcSFDBMD()">
+            <i class="fas fa-play"></i> Generate Diagrams
+          </button>
+        </div>
+
+        <div class="calc-results glass-card">
+          <h3 class="card-title"><i class="fas fa-info-circle"></i> Key Values</h3>
+          <div id="sfd_results" class="results-display">
+            <div class="placeholder-state"><i class="fas fa-arrow-left fa-2x"></i><p>Enter values and generate</p></div>
+          </div>
+        </div>
+
+        <div class="calc-visual glass-card" style="grid-column: 1/-1">
+          <h3 class="card-title"><i class="fas fa-chart-area"></i> SFD & BMD Diagrams</h3>
+          <div id="sfd_chart" style="height:380px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEAM DEFLECTION -->
+    <div class="calc-panel" id="calc-deflection">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-arrows-alt-v"></i> Beam Deflection Calculator</h3>
+          <div class="concept-badge">Maximum Deflection · Slope · EI Method</div>
+
+          <div class="input-group-custom">
+            <label>Beam & Load Type</label>
+            <select id="defl_type" class="eng-select">
+              <option value="ss_center">SS Beam - Central Point Load</option>
+              <option value="ss_udl">SS Beam - UDL</option>
+              <option value="cant_end">Cantilever - End Point Load</option>
+              <option value="cant_udl">Cantilever - UDL</option>
+            </select>
+          </div>
+          <div class="input-group-custom">
+            <label>Span (L)</label>
+            <div class="input-with-unit"><input type="number" id="defl_L" value="3" class="eng-input"><span class="unit-badge">m</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Load (P or w)</label>
+            <div class="input-with-unit"><input type="number" id="defl_P" value="20" class="eng-input"><span class="unit-badge">kN or kN/m</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Young's Modulus (E)</label>
+            <div class="input-with-unit"><input type="number" id="defl_E" value="200" class="eng-input"><span class="unit-badge">GPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Section: Width (b)</label>
+            <div class="input-with-unit"><input type="number" id="defl_b" value="100" class="eng-input"><span class="unit-badge">mm</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Section: Depth (d)</label>
+            <div class="input-with-unit"><input type="number" id="defl_d" value="200" class="eng-input"><span class="unit-badge">mm</span></div>
+          </div>
+          <button class="calc-btn" onclick="calcDeflection()"><i class="fas fa-play"></i> Calculate Deflection</button>
+        </div>
+        <div class="calc-results glass-card">
+          <h3 class="card-title"><i class="fas fa-ruler"></i> Deflection Results</h3>
+          <div id="defl_results" class="results-display">
+            <div class="placeholder-state"><i class="fas fa-arrow-left fa-2x"></i><p>Enter values and calculate</p></div>
+          </div>
+        </div>
+        <div class="calc-visual glass-card">
+          <h3 class="card-title"><i class="fas fa-wave-square"></i> Deflection Curve</h3>
+          <div id="defl_chart" style="height:300px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHAFT DESIGN -->
+    <div class="calc-panel" id="calc-shaft">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-cog"></i> Shaft Design Calculator</h3>
+          <div class="concept-badge">Torsion · Combined Loading · ASME Code</div>
+          <div class="input-group-custom">
+            <label>Power (P)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_P" value="15" class="eng-input"><span class="unit-badge">kW</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Speed (N)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_N" value="1440" class="eng-input"><span class="unit-badge">rpm</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Bending Moment (M)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_M" value="100" class="eng-input"><span class="unit-badge">N·m</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Allowable Shear Stress (τ_allow)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_tau" value="40" class="eng-input"><span class="unit-badge">MPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Kb (bending shock factor)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_Kb" value="1.5" step="0.1" class="eng-input"><span class="unit-badge">—</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Kt (torsion shock factor)</label>
+            <div class="input-with-unit"><input type="number" id="shaft_Kt" value="1.0" step="0.1" class="eng-input"><span class="unit-badge">—</span></div>
+          </div>
+          <button class="calc-btn" onclick="calcShaft()"><i class="fas fa-play"></i> Design Shaft</button>
+        </div>
+        <div class="calc-results glass-card" style="grid-column: 2/-1">
+          <h3 class="card-title"><i class="fas fa-cogs"></i> Shaft Design Results</h3>
+          <div id="shaft_results" class="results-display">
+            <div class="placeholder-state"><i class="fas fa-arrow-left fa-2x"></i><p>Enter parameters and design</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EULER BUCKLING -->
+    <div class="calc-panel" id="calc-buckling">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-compress-alt"></i> Euler Buckling Calculator</h3>
+          <div class="concept-badge">Critical Load · Slenderness Ratio · End Conditions</div>
+          <div class="input-group-custom">
+            <label>End Condition</label>
+            <select id="buck_end" class="eng-select">
+              <option value="1">Both ends pinned (K=1)</option>
+              <option value="0.5">Both ends fixed (K=0.5)</option>
+              <option value="2">One fixed, one free (K=2)</option>
+              <option value="0.7">One fixed, one pinned (K=0.7)</option>
+            </select>
+          </div>
+          <div class="input-group-custom">
+            <label>Column Length (L)</label>
+            <div class="input-with-unit"><input type="number" id="buck_L" value="3" class="eng-input"><span class="unit-badge">m</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Young's Modulus (E)</label>
+            <div class="input-with-unit"><input type="number" id="buck_E" value="200" class="eng-input"><span class="unit-badge">GPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Cross Section</label>
+            <select id="buck_section" class="eng-select" onchange="updateBucklingSection()">
+              <option value="circular">Solid Circular</option>
+              <option value="hollow">Hollow Circular</option>
+              <option value="rectangular">Rectangular</option>
+            </select>
+          </div>
+          <div id="buck_circle_inputs">
+            <div class="input-group-custom">
+              <label>Diameter (d)</label>
+              <div class="input-with-unit"><input type="number" id="buck_d" value="50" class="eng-input"><span class="unit-badge">mm</span></div>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcBuckling()"><i class="fas fa-play"></i> Calculate Critical Load</button>
+        </div>
+        <div class="calc-results glass-card">
+          <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Buckling Results</h3>
+          <div id="buck_results" class="results-display">
+            <div class="placeholder-state"><i class="fas fa-arrow-left fa-2x"></i><p>Enter parameters and calculate</p></div>
+          </div>
+        </div>
+        <div class="calc-visual glass-card">
+          <h3 class="card-title"><i class="fas fa-chart-line"></i> Load vs Slenderness</h3>
+          <div id="buck_chart" style="height:300px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOHR'S CIRCLE -->
+    <div class="calc-panel" id="calc-mohr">
+      <div class="calc-grid">
+        <div class="calc-inputs glass-card">
+          <h3 class="card-title"><i class="fas fa-circle-notch"></i> Mohr's Circle Generator</h3>
+          <div class="concept-badge">Principal Stresses · Maximum Shear Stress · Stress Transformation</div>
+          <div class="input-group-custom">
+            <label>Normal Stress σx</label>
+            <div class="input-with-unit"><input type="number" id="mohr_sx" value="80" class="eng-input"><span class="unit-badge">MPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Normal Stress σy</label>
+            <div class="input-with-unit"><input type="number" id="mohr_sy" value="-40" class="eng-input"><span class="unit-badge">MPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Shear Stress τxy</label>
+            <div class="input-with-unit"><input type="number" id="mohr_txy" value="30" class="eng-input"><span class="unit-badge">MPa</span></div>
+          </div>
+          <div class="input-group-custom">
+            <label>Rotation angle θ (for transformed stresses)</label>
+            <div class="input-with-unit"><input type="number" id="mohr_theta" value="30" class="eng-input"><span class="unit-badge">deg</span></div>
+          </div>
+          <button class="calc-btn" onclick="calcMohr()"><i class="fas fa-play"></i> Generate Mohr's Circle</button>
+        </div>
+        <div class="calc-results glass-card">
+          <h3 class="card-title"><i class="fas fa-info-circle"></i> Principal Stresses</h3>
+          <div id="mohr_results" class="results-display">
+            <div class="placeholder-state"><i class="fas fa-arrow-left fa-2x"></i><p>Enter stresses and generate</p></div>
+          </div>
+        </div>
+        <div class="calc-visual glass-card">
+          <h3 class="card-title"><i class="fas fa-circle"></i> Mohr's Circle Diagram</h3>
+          <div id="mohr_chart" style="height:350px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== SIMULATIONS ===================== -->
+<section id="simulations" class="section-panel alt-bg">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-play-circle"></i> Physics-Based Simulations</div>
+    <h2 class="section-title">Real-Time <span class="accent-gradient">Engineering Simulations</span></h2>
+    <p class="section-desc">Interact with live physics — see mechanics respond to your inputs instantly</p>
+  </div>
+
+  <div class="sim-grid">
+
+    <!-- Beam Bending Sim -->
+    <div class="sim-card glass-card">
+      <div class="sim-header">
+        <span class="sim-icon"><i class="fas fa-wave-square"></i></span>
+        <h3>Beam Bending</h3>
+      </div>
+      <canvas id="beamCanvas" width="500" height="200"></canvas>
+      <div class="sim-controls">
+        <div class="slider-group">
+          <label>Load: <span id="beamLoadVal">10</span> kN</label>
+          <input type="range" id="beamLoad" min="1" max="100" value="10" oninput="updateBeamSim()">
+        </div>
+        <div class="slider-group">
+          <label>Span: <span id="beamSpanVal">4</span> m</label>
+          <input type="range" id="beamSpan" min="1" max="10" value="4" oninput="updateBeamSim()">
+        </div>
+        <div class="slider-group">
+          <label>EI: <span id="beamEIVal">1000</span> kN·m²</label>
+          <input type="range" id="beamEI" min="100" max="5000" value="1000" oninput="updateBeamSim()">
+        </div>
+      </div>
+      <div class="sim-readout" id="beam_readout">Max Deflection: —</div>
+    </div>
+
+    <!-- Shaft Torsion Sim -->
+    <div class="sim-card glass-card">
+      <div class="sim-header">
+        <span class="sim-icon"><i class="fas fa-sync"></i></span>
+        <h3>Shaft Torsion</h3>
+      </div>
+      <canvas id="torsionCanvas" width="500" height="200"></canvas>
+      <div class="sim-controls">
+        <div class="slider-group">
+          <label>Torque: <span id="torqueVal">500</span> N·m</label>
+          <input type="range" id="torqueSlider" min="100" max="2000" value="500" oninput="updateTorsionSim()">
+        </div>
+        <div class="slider-group">
+          <label>Diameter: <span id="diaVal">50</span> mm</label>
+          <input type="range" id="diaSlider" min="20" max="150" value="50" oninput="updateTorsionSim()">
+        </div>
+        <div class="slider-group">
+          <label>Length: <span id="lenVal">1.0</span> m</label>
+          <input type="range" id="lenSlider" min="0.5" max="3" step="0.1" value="1.0" oninput="updateTorsionSim()">
+        </div>
+      </div>
+      <div class="sim-readout" id="torsion_readout">Shear Stress: —</div>
+    </div>
+
+    <!-- Column Buckling Sim -->
+    <div class="sim-card glass-card">
+      <div class="sim-header">
+        <span class="sim-icon"><i class="fas fa-compress-alt"></i></span>
+        <h3>Column Buckling</h3>
+      </div>
+      <canvas id="bucklingCanvas" width="500" height="200"></canvas>
+      <div class="sim-controls">
+        <div class="slider-group">
+          <label>Load %: <span id="buckLoadVal">50</span>% of P_cr</label>
+          <input type="range" id="buckLoad" min="0" max="120" value="50" oninput="updateBucklingSim()">
+        </div>
+        <div class="slider-group">
+          <label>Slenderness λ: <span id="buckSlendVal">80</span></label>
+          <input type="range" id="buckSlend" min="20" max="200" value="80" oninput="updateBucklingSim()">
+        </div>
+      </div>
+      <div class="sim-readout" id="buckling_readout">Status: Safe</div>
+    </div>
+
+    <!-- Stress Distribution -->
+    <div class="sim-card glass-card">
+      <div class="sim-header">
+        <span class="sim-icon"><i class="fas fa-gradient"></i></span>
+        <h3>Bending Stress Distribution</h3>
+      </div>
+      <canvas id="stressDistCanvas" width="500" height="200"></canvas>
+      <div class="sim-controls">
+        <div class="slider-group">
+          <label>Moment: <span id="momentVal">50</span> kN·m</label>
+          <input type="range" id="momentSlider" min="10" max="200" value="50" oninput="updateStressDist()">
+        </div>
+        <div class="slider-group">
+          <label>Depth: <span id="depthVal">300</span> mm</label>
+          <input type="range" id="depthSlider" min="100" max="600" value="300" oninput="updateStressDist()">
+        </div>
+      </div>
+      <div class="sim-readout" id="stressDist_readout">Max Bending Stress: —</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== VIRTUAL LAB ===================== -->
+<section id="virtual-lab" class="section-panel">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-flask"></i> Virtual Laboratory</div>
+    <h2 class="section-title">Virtual <span class="accent-gradient">Experiments</span></h2>
+    <p class="section-desc">SPPU PCC-201-MEC — Simulate real laboratory equipment with adjustable parameters</p>
+    <!-- Experiment Report Buttons -->
+    <div class="exp-report-bar">
+      <span class="report-bar-label"><i class="fas fa-file-alt"></i> Generate SPPU Experiment Report:</span>
+      <button class="exp-report-btn" onclick="openExperimentReport('exp01')">
+        <i class="fas fa-download"></i> Exp 01 · UTM (Tension/Compression)
+      </button>
+      <button class="exp-report-btn" onclick="openExperimentReport('exp02')">
+        <i class="fas fa-download"></i> Exp 02 · Bending Deflection
+      </button>
+      <button class="exp-report-btn" onclick="openExperimentReport('exp03')">
+        <i class="fas fa-download"></i> Exp 03 · Torsion Shear Test
+      </button>
+      <button class="exp-report-btn" onclick="openExperimentReport('exp04')">
+        <i class="fas fa-download"></i> Exp 04 · Impact Test
+      </button>
+    </div>
+  </div>
+
+  <div class="lab-tabs">
+    <button class="lab-tab active" data-lab="utm">Universal Testing Machine</button>
+    <button class="lab-tab" data-lab="torsion">Torsion Test</button>
+    <button class="lab-tab" data-lab="deflection_exp">Beam Deflection</button>
+    <button class="lab-tab" data-lab="impact">Impact Test</button>
+    <button class="lab-tab" data-lab="buckling_exp">Buckling Test</button>
+  </div>
+
+  <div class="lab-workspace">
+
+    <!-- UTM -->
+    <div class="lab-panel active" id="lab-utm">
+      <div class="utm-three-col">
+
+        <!-- Column 1: Machine Animation -->
+        <div class="glass-card utm-col-machine">
+          <h3 class="card-title"><i class="fas fa-industry"></i> Universal Testing Machine</h3>
+          <canvas id="utmCanvas" width="260" height="380"></canvas>
+          <div class="machine-controls" style="margin-top:10px">
+            <button class="lab-btn" id="utmStartBtn" onclick="runUTM()"><i class="fas fa-play"></i> Run Test</button>
+            <button class="lab-btn danger" onclick="resetUTM()"><i class="fas fa-redo"></i> Reset</button>
+          </div>
+        </div>
+
+        <!-- Column 2: Specimen Parameters + Live Readings -->
+        <div class="glass-card utm-col-params">
+          <h3 class="card-title"><i class="fas fa-sliders-h"></i> Specimen Parameters</h3>
+          <div class="input-group-custom">
+            <label>Material</label>
+            <select id="utm_material" class="eng-select">
+              <option value="mild_steel">Mild Steel</option>
+              <option value="cast_iron">Cast Iron</option>
+              <option value="aluminum">Aluminum</option>
+              <option value="copper">Copper</option>
+            </select>
+          </div>
+          <div class="input-group-custom">
+            <label>Gauge Length (mm)</label>
+            <input type="number" id="utm_gauge" value="50" class="eng-input">
+          </div>
+          <div class="input-group-custom">
+            <label>Diameter (mm)</label>
+            <input type="number" id="utm_dia" value="12" class="eng-input">
+          </div>
+
+          <!-- Live Gauge Readings -->
+          <div style="margin-top:6px">
+            <div class="card-title" style="margin-bottom:8px;font-size:0.95rem">
+              <i class="fas fa-tachometer-alt"></i> Live Instrument Readings
+            </div>
+            <div class="lab-readings glass-inner">
+              <div class="reading-row"><span>Load (kN):</span><span class="reading-val" id="utm_load">0 kN</span></div>
+              <div class="reading-row"><span>Extension (mm):</span><span class="reading-val" id="utm_ext">0 mm</span></div>
+              <div class="reading-row"><span>Stress (MPa):</span><span class="reading-val" id="utm_stress">0 MPa</span></div>
+              <div class="reading-row"><span>Strain (ε):</span><span class="reading-val" id="utm_strain">0</span></div>
+              <div class="reading-row highlight"><span>Zone:</span><span class="reading-val" id="utm_status">Ready</span></div>
+            </div>
+          </div>
+
+          <!-- Zone Legend -->
+          <div class="utm-zone-legend">
+            <div class="zone-item"><span class="zone-dot" style="background:#00d4ff"></span>Elastic</div>
+            <div class="zone-item"><span class="zone-dot" style="background:#ffd32a"></span>Yield</div>
+            <div class="zone-item"><span class="zone-dot" style="background:#7b2fff"></span>Strain Hardening</div>
+            <div class="zone-item"><span class="zone-dot" style="background:#ff4757"></span>Necking / Fracture</div>
+          </div>
+        </div>
+
+        <!-- Column 3: Live Real-Time Graph -->
+        <div class="glass-card utm-col-graph">
+          <h3 class="card-title"><i class="fas fa-chart-line"></i> Real-Time Stress–Strain Curve</h3>
+          <div class="utm-graph-tabs">
+            <button class="utm-gtab active" id="utm_tab_ss" onclick="switchUTMChart('ss',this)">Stress–Strain</button>
+            <button class="utm-gtab" id="utm_tab_le" onclick="switchUTMChart('le',this)">Load–Extension</button>
+          </div>
+          <div id="utm_chart" style="height:310px;width:100%"></div>
+          <!-- Key values bar under graph -->
+          <div class="utm-key-vals" id="utm_key_vals">
+            <div class="kv-item"><span class="kv-label">E (GPa)</span><span class="kv-val" id="kv_E">—</span></div>
+            <div class="kv-item"><span class="kv-label">σ_y (MPa)</span><span class="kv-val" id="kv_sy">—</span></div>
+            <div class="kv-item"><span class="kv-label">UTS (MPa)</span><span class="kv-val" id="kv_uts">—</span></div>
+            <div class="kv-item"><span class="kv-label">% Elong.</span><span class="kv-val" id="kv_el">—</span></div>
+            <div class="kv-item"><span class="kv-label">Fracture σ</span><span class="kv-val" id="kv_fr">—</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Torsion Test -->
+    <div class="lab-panel" id="lab-torsion">
+      <div class="lab-grid">
+        <div class="glass-card lab-machine">
+          <h3 class="card-title"><i class="fas fa-sync-alt"></i> Torsion Testing Machine</h3>
+          <canvas id="torsionTestCanvas" width="320" height="300"></canvas>
+          <div class="machine-controls">
+            <button class="lab-btn" onclick="runTorsionTest()"><i class="fas fa-play"></i> Apply Torque</button>
+            <button class="lab-btn danger" onclick="resetTorsionTest()"><i class="fas fa-redo"></i> Reset</button>
+          </div>
+        </div>
+        <div class="glass-card lab-params">
+          <h3 class="card-title"><i class="fas fa-sliders-h"></i> Parameters</h3>
+          <div class="input-group-custom"><label>Torque (N·m)</label><input type="number" id="tors_T" value="200" class="eng-input"></div>
+          <div class="input-group-custom"><label>Diameter (mm)</label><input type="number" id="tors_d" value="25" class="eng-input"></div>
+          <div class="input-group-custom"><label>Length (mm)</label><input type="number" id="tors_L" value="500" class="eng-input"></div>
+          <div class="input-group-custom"><label>G (GPa)</label><input type="number" id="tors_G" value="80" class="eng-input"></div>
+          <button class="lab-btn" onclick="calcTorsionTest()"><i class="fas fa-calculator"></i> Calculate</button>
+          <div class="lab-readings glass-inner" id="tors_readings">
+            <div class="placeholder-state"><p>Press Calculate</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beam Deflection Experiment -->
+    <div class="lab-panel" id="lab-deflection_exp">
+      <div class="lab-grid">
+        <div class="glass-card lab-machine">
+          <h3 class="card-title"><i class="fas fa-arrows-alt-v"></i> Beam Deflection Apparatus</h3>
+          <canvas id="deflExpCanvas" width="320" height="300"></canvas>
+          <div class="machine-controls">
+            <div class="slider-group"><label>Load (N): <span id="deflExpLoad">50</span></label><input type="range" id="deflExpLoadSlider" min="0" max="500" value="50" oninput="updateDeflExp()"></div>
+          </div>
+        </div>
+        <div class="glass-card lab-params">
+          <h3 class="card-title"><i class="fas fa-sliders-h"></i> Setup</h3>
+          <div class="input-group-custom"><label>Beam Type</label><select id="deflExp_type" class="eng-select"><option>Simply Supported</option><option>Cantilever</option></select></div>
+          <div class="input-group-custom"><label>Length (mm)</label><input type="number" id="deflExp_L" value="600" class="eng-input"></div>
+          <div class="input-group-custom"><label>Width (mm)</label><input type="number" id="deflExp_b" value="25" class="eng-input"></div>
+          <div class="input-group-custom"><label>Depth (mm)</label><input type="number" id="deflExp_d" value="6" class="eng-input"></div>
+          <div class="lab-readings glass-inner" id="deflExp_readings"><div class="placeholder-state"><p>Adjust load slider</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Test -->
+    <div class="lab-panel" id="lab-impact">
+      <div class="lab-grid">
+        <div class="glass-card lab-machine">
+          <h3 class="card-title"><i class="fas fa-bolt"></i> Charpy / Izod Impact Test</h3>
+          <canvas id="impactCanvas" width="320" height="380"></canvas>
+          <div class="machine-controls">
+            <button class="lab-btn" id="impactBtn" onclick="runImpactTest()"><i class="fas fa-play"></i> Drop Hammer</button>
+            <button class="lab-btn danger" onclick="resetImpact()"><i class="fas fa-redo"></i> Reset</button>
+          </div>
+        </div>
+        <div class="glass-card lab-params">
+          <h3 class="card-title"><i class="fas fa-sliders-h"></i> Test Parameters</h3>
+          <div class="input-group-custom"><label>Test Type</label><select id="impact_type" class="eng-select"><option>Charpy</option><option>Izod</option></select></div>
+          <div class="input-group-custom"><label>Hammer Mass (kg)</label><input type="number" id="impact_mass" value="22" class="eng-input"></div>
+          <div class="input-group-custom"><label>Initial Angle (°)</label><input type="number" id="impact_angle" value="140" class="eng-input"></div>
+          <div class="lab-readings glass-inner" id="impact_readings">
+            <div class="placeholder-state"><p>Run the test to see results</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buckling Experiment -->
+    <div class="lab-panel" id="lab-buckling_exp">
+      <div class="lab-grid">
+        <div class="glass-card lab-machine">
+          <h3 class="card-title"><i class="fas fa-compress-alt"></i> Column Buckling Apparatus</h3>
+          <canvas id="buckExpCanvas" width="320" height="380"></canvas>
+          <div class="machine-controls">
+            <div class="slider-group"><label>Load (N): <span id="buckExpLoad">0</span></label><input type="range" id="buckExpSlider" min="0" max="100" value="0" oninput="updateBuckExp()"></div>
+          </div>
+        </div>
+        <div class="glass-card lab-params">
+          <h3 class="card-title"><i class="fas fa-sliders-h"></i> Column Properties</h3>
+          <div class="input-group-custom"><label>End Condition</label><select id="buckExp_end" class="eng-select"><option value="1">Both Pinned</option><option value="0.5">Both Fixed</option><option value="2">Fixed-Free</option></select></div>
+          <div class="input-group-custom"><label>Length (mm)</label><input type="number" id="buckExp_L" value="500" class="eng-input"></div>
+          <div class="input-group-custom"><label>Diameter (mm)</label><input type="number" id="buckExp_d" value="10" class="eng-input"></div>
+          <div class="lab-readings glass-inner" id="buckExp_readings"><div class="placeholder-state"><p>Adjust load to see buckling</p></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== CONCEPT VISUALIZER ===================== -->
+<section id="concepts" class="section-panel">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-lightbulb"></i> Visual Concepts</div>
+    <h2 class="section-title">Engineering <span class="accent-gradient">Concept Visualizer</span></h2>
+    <p class="section-desc">Animated 3D explanations of bending, torsion, and buckling — how structures really behave</p>
+  </div>
+
+  <!-- 2D animated concept cards -->
+  <div id="conceptVisualizer" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px;max-width:1300px;margin:0 auto 40px"></div>
+
+  <!-- 3 interactive 3D viewers side by side -->
+  <div class="concept-3d-grid">
+
+    <!-- 3D BEAM BENDING -->
+    <div class="glass-card concept-3d-card">
+      <h3 class="card-title"><i class="fas fa-wave-square"></i> 3D Beam Bending</h3>
+      <div class="concept-badge">Simply Supported · Central Load · Neutral Axis · Stress Zones</div>
+      <div id="beam3DContainer" class="concept-3d-viewport"></div>
+      <div class="concept-3d-legend">
+        <span><span class="dot" style="background:#00d4ff"></span> Beam</span>
+        <span><span class="dot" style="background:#ff6b35"></span> Applied Load</span>
+        <span><span class="dot" style="background:#ff4757"></span> Compression Zone</span>
+        <span><span class="dot" style="background:#00ff9d"></span> Tension Zone</span>
+        <span><span class="dot" style="background:#ffd32a"></span> Neutral Axis</span>
+      </div>
+    </div>
+
+    <!-- 3D SHAFT TORSION -->
+    <div class="glass-card concept-3d-card">
+      <h3 class="card-title"><i class="fas fa-sync-alt"></i> 3D Shaft Torsion</h3>
+      <div class="concept-badge">Solid Shaft · Torque · Shear Stress Helix · Key & Keyway</div>
+      <div id="shaft3DContainer" class="concept-3d-viewport"></div>
+      <div class="concept-3d-legend">
+        <span><span class="dot" style="background:#00d4ff"></span> Shaft Body</span>
+        <span><span class="dot" style="background:#ff6b35"></span> Key</span>
+        <span><span class="dot" style="background:#00ff9d"></span> Shear Stress Path (Helix)</span>
+        <span><span class="dot" style="background:#7b2fff"></span> Bearings</span>
+      </div>
+    </div>
+
+    <!-- 3D COLUMN BUCKLING -->
+    <div class="glass-card concept-3d-card">
+      <h3 class="card-title"><i class="fas fa-compress-alt"></i> 3D Column Buckling</h3>
+      <div class="concept-badge">Pinned-Pinned · Euler Buckling Mode · Load vs Deflection</div>
+      <div id="column3DContainer" class="concept-3d-viewport"></div>
+      <div class="concept-3d-legend">
+        <span><span class="dot" style="background:#00d4ff"></span> Stable</span>
+        <span><span class="dot" style="background:#ffd32a"></span> Near Critical</span>
+        <span><span class="dot" style="background:#ff4757"></span> Buckled</span>
+        <span><span class="dot" style="background:#8899bb"></span> Supports</span>
+      </div>
+      <div style="margin-top:10px">
+        <label style="font-size:0.78rem;color:var(--text-secondary);font-family:var(--font-mono)">
+          Load: <span id="col3dLoadLabel">0</span>% Pcr
+        </label>
+        <input type="range" id="col3dLoadSlider" min="0" max="120" value="0"
+          style="width:100%;margin-top:4px" oninput="updateColumn3D(this.value)">
+      </div>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;color:var(--text-muted);font-size:0.78rem;font-family:var(--font-mono);margin-top:20px">
+    <i class="fas fa-mouse-pointer"></i> Drag to Rotate &nbsp;·&nbsp; <i class="fas fa-search-plus"></i> Scroll to Zoom &nbsp;·&nbsp; All visualizations are interactive
+  </p>
+</section>
+
+<!-- ===================== QUIZ SECTION ===================== -->
+<section id="quiz" class="section-panel alt-bg">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-brain"></i> Self Assessment</div>
+    <h2 class="section-title">Interactive <span class="accent-gradient">Quiz Engine</span></h2>
+    <p class="section-desc">Test your understanding with timed quizzes and instant feedback</p>
+  </div>
+
+  <div class="quiz-container glass-card">
+    <div class="quiz-setup" id="quiz_setup">
+      <h3>Configure Your Quiz</h3>
+      <div class="quiz-config">
+        <div class="config-group">
+          <label>Topic</label>
+          <select id="quiz_topic" class="eng-select">
+            <option value="all">All Topics</option>
+            <option value="stress">Stress & Strain</option>
+            <option value="bending">Bending</option>
+            <option value="torsion">Torsion</option>
+            <option value="buckling">Buckling</option>
+            <option value="mohr">Mohr's Circle</option>
+          </select>
+        </div>
+        <div class="config-group">
+          <label>Difficulty</label>
+          <select id="quiz_difficulty" class="eng-select">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <div class="config-group">
+          <label>No. of Questions</label>
+          <select id="quiz_count" class="eng-select">
+            <option value="5">5 Questions</option>
+            <option value="10" selected>10 Questions</option>
+            <option value="15">15 Questions</option>
+          </select>
+        </div>
+      </div>
+      <button class="cta-btn primary" onclick="startQuiz()"><i class="fas fa-play"></i> Start Quiz</button>
+    </div>
+
+    <div class="quiz-active" id="quiz_active" style="display:none">
+      <div class="quiz-header-bar">
+        <div class="quiz-progress-info">
+          Question <span id="q_current">1</span> of <span id="q_total">10</span>
+        </div>
+        <div class="quiz-timer" id="quiz_timer">02:00</div>
+        <div class="quiz-score-display">Score: <span id="q_score">0</span></div>
+      </div>
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="quiz_progress_bar"></div></div>
+      <div class="question-card" id="question_display"></div>
+      <div class="quiz-nav">
+        <button class="cta-btn ghost" onclick="skipQuestion()">Skip</button>
+        <button class="cta-btn primary" id="nextBtn" onclick="nextQuestion()" style="display:none">Next →</button>
+      </div>
+    </div>
+
+    <div class="quiz-results" id="quiz_results" style="display:none">
+      <div class="results-hero">
+        <div class="results-score-circle" id="results_circle">
+          <span id="results_pct">0%</span>
+        </div>
+        <h3 id="results_title">Quiz Complete!</h3>
+        <p id="results_subtitle"></p>
+      </div>
+      <div id="results_breakdown"></div>
+      <button class="cta-btn primary" onclick="resetQuiz()"><i class="fas fa-redo"></i> Try Again</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORMULA EXPLORER ===================== -->
+<section id="formulas" class="section-panel">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-square-root-alt"></i> Formula Database</div>
+    <h2 class="section-title">Engineering <span class="accent-gradient">Formula Explorer</span></h2>
+    <p class="section-desc">Searchable formula cards with visual explanation and applications</p>
+  </div>
+
+  <div class="formula-search">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="formulaSearch" placeholder="Search formulas... (e.g. bending, torsion, buckling)" oninput="searchFormulas()">
+    </div>
+    <div class="formula-filters">
+      <button class="filter-btn active" data-topic="all" onclick="filterFormulas('all',this)">All</button>
+      <button class="filter-btn" data-topic="stress" onclick="filterFormulas('stress',this)">Stress & Strain</button>
+      <button class="filter-btn" data-topic="bending" onclick="filterFormulas('bending',this)">Bending</button>
+      <button class="filter-btn" data-topic="torsion" onclick="filterFormulas('torsion',this)">Torsion</button>
+      <button class="filter-btn" data-topic="buckling" onclick="filterFormulas('buckling',this)">Buckling</button>
+      <button class="filter-btn" data-topic="mohr" onclick="filterFormulas('mohr',this)">Mohr's Circle</button>
+    </div>
+  </div>
+
+  <div class="formula-grid" id="formulaGrid"></div>
+</section>
+
+<!-- ===================== NUMERICAL PRACTICE ===================== -->
+<section id="numericals" class="section-panel alt-bg">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-pencil-alt"></i> Practice Engine</div>
+    <h2 class="section-title">Numerical <span class="accent-gradient">Practice Generator</span></h2>
+    <p class="section-desc">Randomly generated problems with step-by-step hints and solutions</p>
+  </div>
+
+  <div class="practice-container">
+    <div class="practice-config glass-card">
+      <h3 class="card-title"><i class="fas fa-cog"></i> Problem Settings</h3>
+      <div class="input-group-custom">
+        <label>Topic</label>
+        <select id="num_topic" class="eng-select">
+          <option value="stress">Stress & Strain</option>
+          <option value="bending">Bending & SFD/BMD</option>
+          <option value="torsion">Shaft & Torsion</option>
+          <option value="buckling">Euler Buckling</option>
+          <option value="mohr">Mohr's Circle</option>
+        </select>
+      </div>
+      <div class="input-group-custom">
+        <label>Difficulty</label>
+        <select id="num_difficulty" class="eng-select">
+          <option value="easy">Easy (Fundamentals)</option>
+          <option value="medium" selected>Medium (Application)</option>
+          <option value="hard">Hard (Analysis)</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="generateProblem()"><i class="fas fa-dice"></i> Generate Problem</button>
+    </div>
+
+    <div class="practice-problem glass-card" id="practice_problem">
+      <div class="placeholder-state large">
+        <i class="fas fa-dice fa-3x"></i>
+        <h3>Generate a Problem</h3>
+        <p>Configure settings and click Generate Problem to get a random engineering numerical</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INDUSTRIAL APPLICATIONS ===================== -->
+<section id="applications" class="section-panel">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-industry"></i> Real World</div>
+    <h2 class="section-title">Industrial <span class="accent-gradient">Applications</span></h2>
+    <p class="section-desc">How solid mechanics governs real engineering systems</p>
+  </div>
+
+  <div class="app-grid" id="appGrid"></div>
+</section>
+
+<!-- ===================== ACHIEVEMENTS ===================== -->
+<div class="achievements-panel glass-card" id="achievementsPanel">
+  <div class="achievements-header">
+    <span><i class="fas fa-trophy"></i> Achievements</span>
+    <button onclick="toggleAchievements()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="badges-grid" id="badgesGrid"></div>
+</div>
+
+<button class="fab-achievements" onclick="toggleAchievements()" title="Achievements">
+  <i class="fas fa-trophy"></i>
+  <span class="badge-count" id="badgeCount">0</span>
+</button>
+
+<!-- ===================== UNIVERSITY QUESTION BANK ===================== -->
+<section id="qbank" class="section-panel alt-bg">
+  <div class="section-header">
+    <div class="section-label"><i class="fas fa-university"></i> SPPU University Papers</div>
+    <h2 class="section-title">University <span class="accent-gradient">Question Bank</span></h2>
+    <p class="section-desc">Previous year questions (2022–2025) with problem diagrams, step-by-step solutions and marks weightage</p>
+    <div class="qbank-meta">
+      <span class="qb-badge"><i class="fas fa-file-alt"></i> 9 Papers</span>
+      <span class="qb-badge"><i class="fas fa-list-ol"></i> 60+ Questions</span>
+      <span class="qb-badge"><i class="fas fa-layer-group"></i> 5 Units</span>
+      <span class="qb-badge"><i class="fas fa-graduation-cap"></i> S.E. Mech 2019 Pattern</span>
+    </div>
+  </div>
+
+  <!-- Unit Filter Tabs -->
+  <div class="qb-unit-tabs">
+    <button class="qb-unit-tab active" data-unit="all">All Units</button>
+    <button class="qb-unit-tab" data-unit="1">Unit I — Stress &amp; Strain</button>
+    <button class="qb-unit-tab" data-unit="2">Unit II — SFD &amp; BMD</button>
+    <button class="qb-unit-tab" data-unit="3">Unit III — Bending &amp; Shear</button>
+    <button class="qb-unit-tab" data-unit="4">Unit IV — Torsion &amp; Buckling</button>
+    <button class="qb-unit-tab" data-unit="5">Unit V — Principal Stresses</button>
+  </div>
+
+  <!-- Paper Filter -->
+  <div class="qb-paper-filter">
+    <select id="qb_paper_filter" class="eng-select" style="max-width:320px" onchange="filterQBank()">
+      <option value="all">All Papers</option>
+      <option value="insem">In-Semester Only</option>
+      <option value="endsem">End-Semester Only</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+    </select>
+    <div class="qb-stats" id="qb_stats">Showing all questions</div>
+  </div>
+
+  <!-- Question Cards Grid -->
+  <div class="qb-grid" id="qbGrid"></div>
+</section>
+
+<!-- Question Detail Modal -->
+<div class="qb-modal-overlay" id="qbModalOverlay" onclick="closeQBModal()">
+  <div class="qb-modal glass-card" onclick="event.stopPropagation()">
+    <div class="qb-modal-header">
+      <div>
+        <span class="qb-modal-unit" id="modal_unit"></span>
+        <span class="qb-modal-paper" id="modal_paper"></span>
+      </div>
+      <button class="qb-modal-close" onclick="closeQBModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="qb-modal-body">
+      <div class="qb-modal-question" id="modal_question"></div>
+      <canvas id="modal_diagram" class="qb-diagram-canvas"></canvas>
+      <div class="qb-modal-solution" id="modal_solution"></div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Brand & Course -->
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <div class="footer-logo">
+          <i class="fas fa-atom footer-atom"></i>
+          <span class="brand-text" style="font-size:1.3rem">Solid<span class="accent">Mechanics</span> Toolkit</span>
+        </div>
+        <p class="footer-course">PCC-201-MEC &nbsp;·&nbsp; SPPU NEP 2020 &nbsp;·&nbsp; Second Year Mechanical Engineering</p>
+      </div>
+
+      <!-- Developer Card -->
+      <div class="footer-developer-card">
+        <div class="footer-dev-avatar">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="footer-dev-info">
+          <span class="footer-dev-label">Developed &amp; Maintained by</span>
+          <span class="footer-dev-name">Dr. Rahul Bachute</span>
+          <span class="footer-dev-role">Associate Professor · Department of Mechanical Engineering</span>
+          <span class="footer-dev-inst">
+            <i class="fas fa-university"></i>
+            Ajeenkya DY Patil School of Engineering, Pune
+          </span>
+          <div class="footer-dev-links">
+            <a href="https://github.com/rahulbachute" target="_blank" class="footer-dev-link">
+              <i class="fab fa-github"></i> github.com/rahulbachute
+            </a>
+            <a href="https://sites.google.com/view/drrahulbachute" target="_blank" class="footer-dev-link">
+              <i class="fas fa-globe"></i> drrahulbachute
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <span class="footer-copy">
+        <i class="fas fa-copyright"></i> 2025 Dr. Rahul Bachute &nbsp;·&nbsp; Ajeenkya DY Patil School of Engineering, Pune
+      </span>
+      <span class="footer-tagline">
+        <i class="fas fa-heart" style="color:#ff6b35"></i> Built for Engineering Education
+        &nbsp;·&nbsp;
+        <i class="fas fa-code" style="color:var(--accent)"></i> SPPU Approved Syllabus
+      </span>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

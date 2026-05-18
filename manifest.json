@@ -1,0 +1,104 @@
+{
+  "name": "Solid Mechanics Toolkit",
+  "short_name": "SM Toolkit",
+  "description": "Premium Interactive Engineering Education Platform for SPPU PCC-201-MEC — Visualize, Simulate, Learn Solid Mechanics",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#060b18",
+  "theme_color": "#00d4ff",
+  "orientation": "any",
+  "scope": "./",
+  "lang": "en",
+  "categories": ["education", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Solid Mechanics Toolkit — Desktop Dashboard"
+    },
+    {
+      "src": "screenshots/mobile.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Solid Mechanics Toolkit — Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Calculators",
+      "short_name": "Calc",
+      "description": "Open Engineering Calculators",
+      "url": "./index.html#calculators",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Virtual Lab",
+      "short_name": "Lab",
+      "description": "Open Virtual Laboratory",
+      "url": "./index.html#virtual-lab",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Quiz",
+      "short_name": "Quiz",
+      "description": "Take a Self-Assessment Quiz",
+      "url": "./index.html#quiz",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}
